@@ -298,7 +298,7 @@ $lookupCode
 $objStructureCode
 
 # commit the generated code to APIC
-print toXMLStr($topMo)
+print(toXMLStr($topMo))
 $commitCode""")
 
 
@@ -437,7 +437,7 @@ def runfromcli(args):
         elif args.filein:
             with file(args.filein, 'r') as inputfilehandle:
                 inputstr = inputfilehandle.read()
-        print processinputstr(inputstr, args)
+        print(processinputstr(inputstr, args))
 
     elif args.sourcedir:
         sourcedir = os.path.realpath(args.sourcedir)
@@ -446,7 +446,7 @@ def runfromcli(args):
         else:
             targetdir = sourcedir
 
-        print 'Reading from %s and writing to %s' % (sourcedir, targetdir)
+        print('Reading from %s and writing to %s' % (sourcedir, targetdir))
         os.chdir(args.sourcedir)
         for files in os.listdir('.'):
             if (files.lower().endswith('.xml') or
@@ -456,14 +456,14 @@ def runfromcli(args):
                 if os.path.isfile(outfilename):
                     raise IOError(
                         'Output file: %s already exists' % outfilename)
-                print '%s -> %s' % (files, outfilename)
+                print('%s -> %s' % (files, outfilename))
 
                 p = None
                 try:
                     with file(files, 'r') as f:
                         p = processinputstr(f.read(), args)
                 except ETree.ParseError:
-                    print 'XML parser error %s' % files
+                    print('XML parser error %s' % files)
                 else:
                     with open(outfilename, 'w') as f:
                         f.write(p)

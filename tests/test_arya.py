@@ -100,11 +100,11 @@ class Test_arya:
         assert mo
         if codec == 'xml':
             instr = toXMLStr(mo, includeAllProps=True)
-            print instr
+            print(instr)
             pycode = arya.arya().getpython(xmlstr=instr)
         elif codec == 'json':
             instr = toJSONStr(mo, includeAllProps=True)
-            print instr
+            print(instr)
             pycode = arya.arya().getpython(jsonstr=instr)
 
         assert pycode

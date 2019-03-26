@@ -53,8 +53,8 @@ def main():
     json_tree = tree.jtree
 
     # Example output
-    print ElementTree.tostring(xml_tree, encoding='utf-8')
-    print json.dumps(json_tree, indent=4, sort_keys=True)
+    print(ElementTree.tostring(xml_tree, encoding='utf-8'))
+    print(json.dumps(json_tree, indent=4, sort_keys=True))
 
 class PyraTree(object):
     """A tree of PyraTreeNode objects, which represent the MO's."""
