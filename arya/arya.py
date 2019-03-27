@@ -27,7 +27,7 @@ import sys
 import xml.etree.cElementTree as ETree
 import json
 import keyword
-import StringIO
+from io import StringIO
 from argparse import ArgumentParser
 from string import Template
 from collections import OrderedDict
