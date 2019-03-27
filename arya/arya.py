@@ -257,11 +257,11 @@ class arya(object):
 
     def recursejsondict(self, jsondict, parentname):
         pycode, objectname = self.buildcommand(
-            jsondict.keys()[0], parentname,
-            jsondict[jsondict.keys()[0]].get('attributes', {}))
+            list(jsondict.keys())[0], parentname,
+            jsondict[list(jsondict.keys())[0]].get('attributes', {}))
 
-        if 'children' in jsondict[jsondict.keys()[0]]:
-            for j in jsondict[jsondict.keys()[0]]['children']:
+        if 'children' in jsondict[list(jsondict.keys())[0]]:
+            for j in jsondict[list(jsondict.keys())[0]]['children']:
                 pycode += self.recursejsondict(j, objectname)
 
         return pycode
@@ -322,14 +322,14 @@ $commitCode""")
             root = tree.getroot()
             toptag = root.tag
             if toptag == 'imdata':
-                root = list(root)[0]            
+                root = list(root)[0]
             topdn = root.attrib.get('dn', None)
         elif jsonstr:
             j = json.loads(jsonstr)
-            toptag = j.keys()[0]
+            toptag = list(j.keys())[0]
             if toptag == 'imdata':
-                j = j['imdata'][0]            
-            topdn = j[j.keys()[0]].get('attributes', {}).get('dn', None)
+                j = j['imdata'][0]
+            topdn = j[list(j.keys())[0]].get('attributes', {}).get('dn', None)
         else:
             toptag = None
 
